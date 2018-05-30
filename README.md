@@ -7,10 +7,13 @@ released and developed primarily by OpenCFD Ltd.
 
 The visualization ist based on [VTK](http://wwww.vtk.org) an open-source, freely available
 software system for 3D computer graphics, image processing, and visualization. For the current development
-under Debian-Linux a custom-compiled version 8.1.1 of the toolkit is used. We try to
-maintain compatibility to older versions (in particular version 6.3 currently present
-in the Debian repositories) but this depends on the availability of Python 3.x bindings
-which are not provided by current Debian distributions.
+under Debian-Linux version 8.1.0 of the toolkit is used. Version 6.3 currently present
+in the Debian repositories does not provide Python 3.x bindings. It can be installed
+frpm the [PyPI](http://www.pypi.org) python package index using the following command:
+
+```pip3 install vtk```
+
+(If not yet present pip3 can be installed from the package python3-pip.)
 
 Dies ist ein ganz am Anfang befindliches Projekt. Die Entwicklung konzentriert sich
 im Moment auf die Analyse und Visualisierung von bereits durchgeführten Simulationsrechnungen mit OpenFOAM.
