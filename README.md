@@ -2,7 +2,7 @@
 ---------------
 
 This project attempts to compute the aerodynamic properties of airfoil sections
-using [OpenFOAM](www.openfoam.com). OpenFOAM is the free, open source CFD software
+using [OpenFOAM](http://www.openfoam.com). OpenFOAM is the free, open source CFD software
 released and developed primarily by OpenCFD Ltd.
 
 Dies ist ein ganz am Anfang befindliches Projekt. Die Entwicklung konzentriert sich
