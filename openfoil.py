@@ -22,10 +22,27 @@ class MainWindow(QMainWindow):
         self.ui = uic.loadUi("mainwindow.ui", self)
 
         # create a VTK render window within the ui.vtkFrame object
-        self.vtkWidget = QVTKRenderWindowInteractor(self.ui.vtkFrame)
+        self.vtkWidget = QVTKRenderWindowInteractor(self.ui.flowFrame)
         self.ren = vtk.vtkRenderer()
+        self.ren.SetBackground(0.1, 0.2, 0.4)
+        # self.vtkWidget.setGeometry(0,0,600,400)
+        # geo = self.ui.flowFrame.geometry()
+        # self.vtkWidget.setGeometry(geo)
+        # TODO: the widget should scale filling the available space
         self.vtkWidget.GetRenderWindow().AddRenderer(self.ren)
+        
+        # Define custom interaction.
         self.iren = self.vtkWidget.GetRenderWindow().GetInteractor()
+        # this way the mouse doesn't move anything
+        # self.iren.SetInteractorStyle(None)
+        self.iren.SetInteractorStyle(vtk.vtkInteractorStyleTrackballCamera())
+        # this way we just disable the left mouse button
+        self.iren.RemoveObservers('LeftButtonPressEvent')
+        # self.iren.AddObserver('LeftButtonPressEvent', DummyFunc1, 1.0)
+        # self.iren.AddObserver('LeftButtonPressEvent', DummyFunc2, -1.0)
+        
+        # TODO: we want to assign exactly the function of the middle
+        # mouse button (pan) to the left mouse button
 
         # read mesh data
         ff = FoamFile('run/alfa200/constant/polyMesh/points')
@@ -87,18 +104,4 @@ if __name__ == '__main__':
     mainWin.show()
     sys.exit(app.exec_())
     
-    
-"""
-	# Generate lines in between
-	lines = vtk.vtkCellArray()
-	lines.InsertNextCell(len(pts)+int(closed))
-	for i,p in enumerate(pts):
-		lines.InsertCellPoint(i)
-	if closed:
-		lines.InsertCellPoint(0)
-	
-	polygon = vtk.vtkPolyData()
-	polygon.SetPoints(points)
-	polygon.SetLines(lines)
-"""
 
